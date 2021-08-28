@@ -24,20 +24,19 @@ class Database {
       );
   }
 
-
   createDepartment(newDepartment) {
     return this.connection
-      .query("INSERT INTO department SET ?", newDepartment);
+      .query("INSERT INTO department VALUES(DEFAULT, ?)", newDepartment);
   }
 
   createRole(role) {
     return this.connection
-    .query("INSERT INTO role SET ?", role);
+    .query("INSERT INTO role VALUES(DEFAULT, ?)", role);
   }
 
   createEmployee(employee) {
     return this.connection
-      .query("INSERT INTO employee SET ?", employee);
+      .query("INSERT INTO employee VALUES(DEFAULT, ?)", employee);
   }
 
   removeDepartment(departmentId) {

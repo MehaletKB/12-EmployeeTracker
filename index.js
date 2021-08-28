@@ -97,8 +97,8 @@ function addDepartment() {
 function addRole() {
   db.findAllDepartments().then(([response]) => {
     let departments = response;
-    const departmentChoices = departments.map(({ id, department_name }) => ({
-        name: department_name,
+    const departmentChoices = departments.map(({ id, name }) => ({
+        name: name,
         value: id,
     }));
 
@@ -120,7 +120,10 @@ function addRole() {
       name: "role_department"
     },
   ]).then((response) => {
-    db.createRole(response.role_name, response.role_salary, response.role_department)
+    db.createRole({
+      title: response.role_name, 
+      salary: response.role_salary, 
+      department_id: response.role_department})
     .then(() => console.info("You've added a new role."))
     .then(() => displayQuestions())
     })
@@ -221,7 +224,7 @@ function updateEmployeeRole(){
           }]
         )
         .then((response) =>
-          db.queryUpdateEmployeeRole(selectedEmployee,response.role))
+          db.queryUpdateEmployeeRole(selectedEmployee.response.role))
         .then(()=>displayQuestions());
       });
     })
