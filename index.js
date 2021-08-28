@@ -62,21 +62,21 @@ function viewAllDepartments() {
   db.findAllDepartments().then(([response]) => {
     let departments = response;
     console.log(departments)
-  }).then(() => displayQuestions());
+  }).then(displayQuestions());
 }
 
 function viewAllRoles() {
   db.findAllRoles().then(([response]) => {
     let roles = response;
     console.log(roles)
-  }).then(() => displayQuestions)
+  }).then(displayQuestions())
 }
 
 function viewAllEmployees() {
   db.findAllEmployees().then(([response]) => {
     let employees = response;
     console.log(employees)
-  }).then(() => displayQuestions)
+  }).then(displayQuestions())
 }
 
 
