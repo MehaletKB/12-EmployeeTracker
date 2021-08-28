@@ -61,21 +61,21 @@ function displayQuestions() {
 function viewAllDepartments() {
   db.findAllDepartments().then(([response]) => {
     let departments = response;
-    console.log(departments)
+    console.table(departments)
   }).then(displayQuestions());
 }
 
 function viewAllRoles() {
   db.findAllRoles().then(([response]) => {
     let roles = response;
-    console.log(roles)
+    console.table(roles)
   }).then(displayQuestions())
 }
 
 function viewAllEmployees() {
   db.findAllEmployees().then(([response]) => {
     let employees = response;
-    console.log(employees)
+    console.table(employees)
   }).then(displayQuestions())
 }
 
@@ -89,7 +89,7 @@ function addDepartment() {
   ]).then((response) => {
     let newDepartment = response.department_name;
     db.createDepartment(newDepartment)
-    .then(() => console.log("You've added a new department."))
+    .then(() => console.info("You've added a new department."))
     .then(() => displayQuestions())
   })
 }
@@ -121,7 +121,7 @@ function addRole() {
     },
   ]).then((response) => {
     db.createRole(response.role_name, response.role_salary, response.role_department)
-    .then(() => console.log("You've added a new role."))
+    .then(() => console.info("You've added a new role."))
     .then(() => displayQuestions())
     })
   })
@@ -229,6 +229,6 @@ function updateEmployeeRole(){
 }
 
 function finishUp(){
-  console.log("Thank you!");
+  console.info("Thank you!");
   process.exit()
 }
