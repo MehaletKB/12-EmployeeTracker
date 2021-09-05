@@ -36,7 +36,7 @@ class Database {
 
   createEmployee(employee) {
     return this.connection
-      .query("INSERT INTO employee SET ?)", employee);
+      .query("INSERT INTO employee SET ?", employee);
   }
 
   removeDepartment(departmentId) {

@@ -189,14 +189,14 @@ function addEmployee() {
               );
 
               inquirer
-                .prompt([
+                .prompt(
                   {
                     type: "list",
                     message: "Who manages the new employee?",
                     name: "manager",
                     choices: managerChoices,
                   },
-                ])
+                )
                 .then((response) => {
                   console.log(response);
                   let empManager = response.manager;
@@ -207,6 +207,7 @@ function addEmployee() {
                     manager_id: empManager,
                   })
                 })
+                .then(() => console.info("You've added a new employee."))
                 .then(() => displayQuestions());
             })
           })
@@ -247,7 +248,7 @@ function updateEmployeeRole() {
               },
             ])
             .then((response) =>
-              db.queryUpdateEmployeeRole(selectedEmployee.response.role)
+              db.updateEmployeeRole(selectedEmployee, response.role)
             )
             .then(() => displayQuestions());
         });
