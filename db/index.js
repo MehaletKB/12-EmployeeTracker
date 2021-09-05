@@ -31,12 +31,12 @@ class Database {
 
   createRole(role) {
     return this.connection
-    .query("INSERT INTO role VALUES(DEFAULT, ?)", role);
+    .query("INSERT INTO role SET ?", role);
   }
 
   createEmployee(employee) {
     return this.connection
-      .query("INSERT INTO employee VALUES(DEFAULT, ?)", employee);
+      .query("INSERT INTO employee SET ?)", employee);
   }
 
   removeDepartment(departmentId) {
